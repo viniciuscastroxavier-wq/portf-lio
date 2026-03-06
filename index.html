@@ -1,109 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editorial Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Meow+Script&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --olive-green: #4f5d37;
+            --beige: #e9e5d9;
+            --burnt-orange: #c06c42;
+            --dark-text: #2c331d;
+            --bg-light: #f4f4f4;
+        }
 
-<title>Vinícius Xavier — UX/UI Designer</title>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Lora', serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+        /* Layout Structure */
+        .portfolio-wrapper {
+            background-color: var(--olive-green);
+            /* Creating the asymmetrical framing effect from the design */
+            padding: 2rem 6rem 2rem 2rem; 
+            max-width: 1100px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
 
-body{
-font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-background:#424E23;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
+        .portfolio-card {
+            background-color: var(--beige);
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            overflow: hidden;
+        }
 
-.container{
-background:#E8E4D8;
-width:1100px;
-padding:80px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:60px;
-}
+        /* Left Column: Text Block */
+        .text-section {
+            flex: 1.2;
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-.left{
-max-width:420px;
-}
+        .signature {
+            font-family: 'Meow Script', cursive;
+            font-size: 4rem;
+            color: var(--dark-text);
+            transform: rotate(-5deg);
+            margin-bottom: 3rem;
+            line-height: 1;
+        }
 
-.signature{
-width:140px;
-margin-bottom:40px;
-}
+        .main-text {
+            color: var(--burnt-orange);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 4rem;
+            font-weight: 400;
+        }
 
-h1{
-font-size:32px;
-margin-bottom:20px;
-}
+        /* Button & Hover Interaction */
+        .action-container {
+            text-align: center;
+            margin-top: auto;
+        }
 
-p{
-color:#C46A2D;
-line-height:1.6;
-margin-bottom:20px;
-}
+        .portfolio-btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--burnt-orange);
+            font-family: inherit;
+            font-size: 1rem;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border: 1px solid var(--burnt-orange);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
 
-.button{
-margin-top:20px;
-display:inline-block;
-padding:12px 24px;
-border:2px solid #C46A2D;
-text-decoration:none;
-color:#C46A2D;
-transition:0.3s;
-}
+        /* Fill effect on hover */
+        .portfolio-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--burnt-orange);
+            z-index: -1;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
 
-.button:hover{
-background:#C46A2D;
-color:white;
-}
+        .portfolio-btn:hover {
+            color: var(--beige);
+        }
 
-.photo img{
-width:320px;
-}
+        .portfolio-btn:hover::before {
+            transform: scaleY(1);
+        }
 
-</style>
+        /* Right Column: Portrait Image */
+        .image-section {
+            flex: 1;
+            display: flex;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: grayscale(100%);
+            min-height: 400px; /* Ensures image has presence before loading */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 860px) {
+            .portfolio-wrapper {
+                padding: 1.5rem; /* Even padding on smaller screens */
+            }
+
+            .portfolio-card {
+                flex-direction: column;
+            }
+
+            .text-section {
+                padding: 3rem 2rem;
+                text-align: center;
+            }
+
+            .signature {
+                margin-bottom: 2rem;
+            }
+
+            .main-text {
+                font-size: 1.15rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .image-section img {
+                max-height: 500px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <main class="portfolio-wrapper">
+        <article class="portfolio-card">
+            
+            <section class="text-section">
+                <div class="signature">Vinícius Xavier</div>
+                
+                <p class="main-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                </p>
 
-<div class="left">
+                <div class="action-container">
+                    <a href="#" class="portfolio-btn">View full portfolio</a>
+                </div>
+            </section>
 
-<img src="assinatura.png" class="signature">
+            <section class="image-section">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" alt="Black and white portrait of a man">
+            </section>
 
-<p>
-UX/UI designer exploring digital experiences through art, intuition and Brazilian visual culture.
-</p>
-
-<p>
-I design interfaces that balance usability, aesthetics and emotional connection.
-</p>
-
-<a href="#" class="button">
-View Projects
-</a>
-
-</div>
-
-<div class="photo">
-
-<img src="foto.png">
-
-</div>
-
-</div>
+        </article>
+    </main>
 
 </body>
 </html>
