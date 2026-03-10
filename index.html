@@ -1,195 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editorial Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Meow+Script&display=swap" rel="stylesheet">
-    
-    <style>
-        /* CSS Variables */
-        :root {
-            --olive-green: #4f5d37;
-            --beige: #e9e5d9;
-            --burnt-orange: #c06c42;
-            --dark-text: #2c331d;
-            --bg-light: #f4f4f4;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio – Vinícius</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #424e23;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
 
-        body {
-            background-color: var(--bg-light);
-            font-family: 'Lora', serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
+    .frame {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      min-height: 867px;
+      background-color: #e8e4d8;
+      overflow: hidden;
+    }
 
-        /* Layout Structure */
-        .portfolio-wrapper {
-            background-color: var(--olive-green);
-            /* Creating the asymmetrical framing effect from the design */
-            padding: 2rem 6rem 2rem 2rem; 
-            max-width: 1100px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
+    /* Foto principal (direita) */
+    .photo-main {
+      position: absolute;
+      top: 85px;
+      right: 83px;
+      width: 490px;
+      height: 730px;
+      overflow: hidden;
+    }
 
-        .portfolio-card {
-            background-color: var(--beige);
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            overflow: hidden;
-        }
+    .photo-main img {
+      width: 105.07%;
+      height: 105.07%;
+      object-fit: cover;
+      position: absolute;
+      left: -1.94%;
+      top: -0.04%;
+    }
 
-        /* Left Column: Text Block */
-        .text-section {
-            flex: 1.2;
-            padding: 4rem 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    /* Assinatura / logo (esquerda topo) */
+    .signature {
+      position: absolute;
+      top: 85px;
+      left: 149px;
+      width: 212px;
+      height: 302px;
+    }
 
-        .signature {
-            font-family: 'Meow Script', cursive;
-            font-size: 4rem;
-            color: var(--dark-text);
-            transform: rotate(-5deg);
-            margin-bottom: 3rem;
-            line-height: 1;
-        }
+    .signature img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
-        .main-text {
-            color: var(--burnt-orange);
-            font-size: 1.25rem;
-            line-height: 1.6;
-            margin-bottom: 4rem;
-            font-weight: 400;
-        }
+    /* Texto principal */
+    .text-main {
+      position: absolute;
+      top: 398px;
+      left: 149px;
+      width: 504px;
+      font-size: 24.076px;
+      line-height: 28.892px;
+      color: #c46a2d;
+      font-weight: 400;
+    }
 
-        /* Button & Hover Interaction */
-        .action-container {
-            text-align: center;
-            margin-top: auto;
-        }
+    /* Texto secundário */
+    .text-secondary {
+      position: absolute;
+      top: 726px;
+      right: 264px;
+      width: 405px;
+      font-size: 19.429px;
+      line-height: 23.315px;
+      color: #c46a2d;
+      font-weight: 400;
+      text-align: right;
+    }
 
-        .portfolio-btn {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--burnt-orange);
-            font-family: inherit;
-            font-size: 1rem;
-            text-decoration: none;
-            padding: 0.75rem 2rem;
-            border: 1px solid var(--burnt-orange);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
+    /* Responsivo */
+    @media (max-width: 900px) {
+      body { padding: 20px; }
 
-        /* Fill effect on hover */
-        .portfolio-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--burnt-orange);
-            z-index: -1;
-            transform: scaleY(0);
-            transform-origin: bottom;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+      .frame {
+        min-height: unset;
+        padding-bottom: 60px;
+      }
 
-        .portfolio-btn:hover {
-            color: var(--beige);
-        }
+      .photo-main {
+        position: relative;
+        top: unset; right: unset;
+        width: 100%;
+        height: 320px;
+        margin-bottom: 24px;
+      }
 
-        .portfolio-btn:hover::before {
-            transform: scaleY(1);
-        }
+      .signature {
+        position: relative;
+        top: unset; left: unset;
+        width: 160px;
+        height: 200px;
+        margin: 24px auto 0;
+        display: block;
+      }
 
-        /* Right Column: Portrait Image */
-        .image-section {
-            flex: 1;
-            display: flex;
-        }
+      .text-main, .text-secondary {
+        position: relative;
+        top: unset; left: unset; right: unset;
+        width: 90%;
+        margin: 20px auto;
+        text-align: left;
+      }
 
-        .image-section img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            filter: grayscale(100%);
-            min-height: 400px; /* Ensures image has presence before loading */
-        }
-
-        /* Responsive Design */
-        @media (max-width: 860px) {
-            .portfolio-wrapper {
-                padding: 1.5rem; /* Even padding on smaller screens */
-            }
-
-            .portfolio-card {
-                flex-direction: column;
-            }
-
-            .text-section {
-                padding: 3rem 2rem;
-                text-align: center;
-            }
-
-            .signature {
-                margin-bottom: 2rem;
-            }
-
-            .main-text {
-                font-size: 1.15rem;
-                margin-bottom: 2.5rem;
-            }
-
-            .image-section img {
-                max-height: 500px;
-            }
-        }
-    </style>
+      .text-secondary {
+        text-align: right;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="frame">
 
-    <main class="portfolio-wrapper">
-        <article class="portfolio-card">
-            
-            <section class="text-section">
-                <div class="signature">Vinícius Xavier</div>
-                
-                <p class="main-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-                </p>
+    <!-- Foto principal -->
+    <div class="photo-main">
+      <img
+        src="https://www.figma.com/api/mcp/asset/6398b149-595f-4356-8ad2-caac8f5393ee"
+        alt="Foto de Vinícius"
+      />
+    </div>
 
-                <div class="action-container">
-                    <a href="#" class="portfolio-btn">View full portfolio</a>
-                </div>
-            </section>
+    <!-- Assinatura -->
+    <div class="signature">
+      <img
+        src="https://www.figma.com/api/mcp/asset/e40b7050-5a8e-4eba-bd96-f204fc079b62"
+        alt="Assinatura Vinícius"
+      />
+    </div>
 
-            <section class="image-section">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" alt="Black and white portrait of a man">
-            </section>
+    <!-- Texto principal -->
+    <p class="text-main">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
+      Risus commodo viverra maecenas accumsan lacus vel facilisis.
+    </p>
 
-        </article>
-    </main>
+    <!-- Texto secundário -->
+    <p class="text-secondary">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua.
+    </p>
 
+  </div>
 </body>
 </html>
